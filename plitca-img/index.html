@@ -3,8 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="css/jquery-ui.min.css">
+    <link rel="stylesheet" href="src/style.css">
+    <script src="js/jquery-3.2.1.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
 </head>
 <body>
-    <h2>1234123412341234</h2>
+  <style>
+    body{font:9pt Arial,sans-serif;}
+    ul{list-style-type:none; margin:10px;}
+    ul li{float:left; margin:3px; padding:0.4em; height:40px; width:70px; background-color:#fff; border:1px solid #888; font-size:1.4em}
+  </style>
+  <ul id="sortable" class="plitImage">
+
+ </ul>
+
+  <script>
+   var arr_elem = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+	arr_elem.sort(compareRandom);
+
+	for(i = 0; i < arr_elem.length; i++){
+
+		$(".plitImage").append('<li data-count='+arr_elem[i]+'><div class="bg-item" style="transform: translateX(-'+(arr_elem[i] * 10)+'%)"></div></li>');
+	}
+
+    $("#sortable").sortable({
+    	axis: "x",
+    	update: function(event, ui) {
+
+    		var notSovp = 1;
+
+			$(".plitImage li").each(function(){
+
+				var zn_index = $(this).index();
+				var zn_nom = $(this).attr("data-count");
+				if(zn_index != zn_nom) {
+					notSovp = 0;
+				}
+			});
+
+    		if(notSovp == 1) {
+    			$(".plitImage").addClass("right");
+    		}
+    	}
+    });
+
+    var count = $(".plitImage li").length;
+    var widt_wr = $(".plitImage").width();
+
+    var count2 = widt_wr / count;
+    count = 100 / count;
+    
+
+    var ii = 0;
+
+    $(".plitImage li").each(function(){
+    	//$(this).css({"width": count2+"px"});
+    	//$(this).find(".bg-item").css({"transform": "translateX(-"+ii+"%)" });
+    	ii = ii + count;
+    });
+
+    //====================
+    function compareRandom(a, b) {
+	  return Math.random() - 0.5;
+	}
+
+    
+  </script>
 </body>
 </html>

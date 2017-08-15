@@ -18,15 +18,15 @@ var gulp        = require('gulp'),
 var path = {
         build: {
             // styles:        'local/templates/luster/'
-            styles: 'all/'
+            styles: 'src/'
         },
         src: {
             // styles:            'src/styles/*.*'
-            styles: 'all/*.*'
+            styles: 'src/*.*'
         },
         watch: {
             //styles:    'src/styles/**/*.scss'
-            styles: 'all/*.sass',
+            styles: 'src/*.sass',
         }
 };
 

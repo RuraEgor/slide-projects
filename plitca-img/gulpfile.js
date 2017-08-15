@@ -1,1 +1,1 @@
-C:/Users/murad/Desktop/Личные проекты/gulpfile.js
+E:/Практика/slide-projects/gulpfile.js
