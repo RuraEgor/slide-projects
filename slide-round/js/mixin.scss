@@ -1,0 +1,145 @@
+// Simple png sprite
+@mixin spriteWidth($sprite) { width: nth($sprite, 5); }
+@mixin spriteHeight($sprite) { height: nth($sprite, 6); }
+@mixin spritePosition($sprite) { background-position: nth($sprite, 3) nth($sprite, 4); }
+@mixin spriteImage($sprite) { background-image: url(images/ nth($sprite, 9)); }
+@mixin sprite($sprite) {
+	@include spriteImage($sprite);
+	@include spritePosition($sprite);
+	@include spriteWidth($sprite);
+	@include spriteHeight($sprite);
+	display: inline-block;
+}
+
+@mixin bg($background, $width: 0, $height: 0) {
+    background: $background;
+    width: $width;
+    height: $height;
+}
+
+@mixin click_effect() {
+    &:active {
+        background-color: rgba(0,0,0,0.1);
+    }
+}
+
+@mixin tile_place() {
+    
+    .bx_catalog_tile_img {
+        left: auto;
+        right: 0;
+    }
+
+    .bx_catalog_tile_description {
+        right: auto;
+        left: 0;
+
+        &:before {
+            border: 14px solid transparent;
+            border-left: 14px solid #fff;
+            @include position(absolute, 50%, "", "", 100%);
+        }
+    }
+}
+
+@mixin btn($height, $c-bg, $c-text: #fff, $font-size: 14px, $display: inline-block, $rounded: true) {
+	//@warn "height = #{$height}";
+	//@debug "height = #{$height}";
+	@if $rounded {
+		border-radius: $height / 2;
+	}
+	height: $height;
+	line-height:$height;
+	padding:0 $height / 2;
+	display: $display;
+	background-color:$c-bg;
+	color: $c-text;
+	font-size: px2em($font-size);
+	text-align: center;
+	vertical-align: middle;
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+	cursor: pointer;
+	border: 1px solid transparent;
+	white-space: nowrap;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	text-decoration:none;
+	//@include transition(background-color $transition ease);
+	&:hover,
+	&:active,
+	&:focus {
+		color: $c-text;
+		text-decoration:none;
+		outline: none;
+	}
+}
+
+@mixin format-text($font-size: 14px, $font-weight: 500, $color: false, $line-height: false) {
+	font-size: px2em($font-size);
+	font-weight: $font-weight;
+
+	@if $color {
+		color:$color;
+	}
+
+	@if $line-height {
+		line-height: px2em($line-height);
+	}
+	@else {
+		line-height: 100%;
+	}
+}
+
+@mixin center {
+	position:absolute;
+	margin:auto;
+	left:0;
+	top:0;
+	right:0;
+	bottom:0;
+}
+
+// add muted bg
+@mixin muted($color: #000, $opacity: 0.5) {
+	position:relative;
+	&:before {
+		content:'';
+		position:absolute;
+		left:0;
+		right:0;
+		top:0;
+		bottom:0;
+		background-color:rgba($color, $opacity);
+	}
+}
+
+@mixin background-type($size: cover) {
+	background-position: center center;
+	background-size: $size;
+	background-repeat: no-repeat;
+}
+
+@mixin position($position: absolute, $offset-top: 0, $offset-right: 0, $offset-bottom: 0, $offset-left: 0) {
+  position: $position;
+  @if $offset-top != "" {
+      top: $offset-top;
+  }
+  @if $offset-bottom != "" {
+      bottom: $offset-bottom;
+  }
+  @if $offset-left != "" {
+      left: $offset-left;
+  }
+  @if $offset-right != "" {
+      right: $offset-right;
+  }
+}
+
+@mixin bx_incl {
+	> div {
+		float: right;
+	}
+}

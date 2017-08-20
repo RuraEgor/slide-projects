@@ -9,28 +9,39 @@
     <script src="js/jquery-ui.min.js"></script>
 </head>
 <body>
-  <style>
-    body{font:9pt Arial,sans-serif;}
-    ul{list-style-type:none; margin:10px;}
-    ul li{float:left; margin:3px; padding:0.4em; height:40px; width:70px; background-color:#fff; border:1px solid #888; font-size:1.4em}
-  </style>
   <ul id="sortable" class="plitImage">
-
- </ul>
+  </ul>
 
   <script>
-   var arr_elem = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+   var arr_elem = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 
-	arr_elem.sort(compareRandom);
+
+    var fl_row = 0;
+    var fl_column = 0;
+    var arr_all_elem = [];
 
 	for(i = 0; i < arr_elem.length; i++){
 
-		$(".plitImage").append('<li data-count='+arr_elem[i]+'><div class="bg-item" style="transform: translateX(-'+(arr_elem[i] * 10)+'%)"></div></li>');
+        if( i % 4 ) { fl_row++; } else { fl_row = 0; }
+        if( i % 4 ) {  } else { fl_column++; }
+
+		//$(".plitImage").append('<li data-count='+arr_elem[i]+' style="background-position: -'+(fl_row * 175)+'px -'+(fl_column * 175)+'px"></li>');
+
+        arr_all_elem[arr_all_elem.length] = '<li data-count='+i+' style="background-position: -'+(fl_row * 250)+'px -'+(fl_column * 175)+'px"></li>';
 	}
 
+
+    arr_elem.sort(compareRandom);
+    
+    for(y = 0; y < arr_elem.length; y++){
+        $(".plitImage").append(arr_all_elem[arr_elem[y]]);
+    }
+
+
     $("#sortable").sortable({
-    	axis: "x",
-    	containment:"#sortable",
+    	//axis: "x",
+    	//containment:"#sortable",
+        //grid:[250,175],
 
     	update: function(event, ui) {
 

@@ -5,7 +5,8 @@
   font-size: 0;
   padding: 0;
   background-size: cover;
-  min-height: 400px; }
+  min-height: 400px;
+  position: relative; }
   .plitImage li {
     width: 10%;
     box-sizing: border-box;
@@ -17,7 +18,7 @@
     border: 0;
     overflow: hidden;
     position: relative;
-    border-radius: 30px;
+    border-radius: 15px;
     transition: border, border-radius 1s;
     background-origin: border-box; }
     .plitImage li .bg-item {

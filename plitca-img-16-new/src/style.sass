@@ -3,19 +3,20 @@ body
 .plitImage
   width: 100%
   max-width: 1000px
-  margin: 200px auto
+  height: 700px
+  margin: 100px auto
   font-size: 0
   padding: 0
-  //background: url(../img/1.jpeg) no-repeat
+  // background: url(../img/1.jpeg) no-repeat
   background-size: cover
   min-height: 400px
   position: relative
 
 
   li
-    width: 10%
+    width: 25%
     box-sizing: border-box
-    height: 400px
+    height: 25%
     display: inline-block
     font-size: 10px
     margin: 0
@@ -28,10 +29,15 @@ body
     transition: border 1s, border-radius 1s
     background-origin: border-box
     background: url(../img/1.jpeg) no-repeat
-    background: url(../img/22.png) no-repeat
-    border: 3px solid #ffffff
+    background: url(http://orig06.deviantart.net/0efb/f/2015/059/b/5/the_esteemed_palace_of_the_crane_chris_ostrowski_1_by_najtkriss-d8ju0zc.jpg) no-repeat
+    border: 1px solid #ffffff
     background-clip: border-box
 
+    &:hover, &:active
+      //z-index: 10
+  
+  .z-ind
+    z-index: 10
 
   &.right
     li
