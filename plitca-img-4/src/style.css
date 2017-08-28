@@ -1,0 +1,53 @@
+.plitImage {
+  width: 100%;
+  max-width: 1024px;
+  height: 760px;
+  margin: 100px auto;
+  font-size: 0;
+  padding: 0;
+  background-size: cover;
+  min-height: 400px;
+  position: relative; 
+}
+
+.plitImage::before {
+  content: "";
+  display: block;
+  box-sizing: border-box;
+  width: 1024px;
+  height: 760px;
+  background: url(../img/fon.png) no-repeat;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: 14s all;
+  opacity: 0;
+}
+
+  .plitImage li {
+    width: 50%;
+    box-sizing: border-box;
+    height: 50%;
+    display: inline-block;
+    font-size: 10px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+    position: relative;
+    border-radius: 15px;
+    transition: border 1s, border-radius 1s;
+    background-origin: border-box;
+    background: url(../img/pers.png) no-repeat;
+    border: 1px solid #ffffff;
+    background-clip: border-box; }
+  .plitImage .z-ind {
+    z-index: 10; }
+  .plitImage.right li {
+    border: 0 solid #ffffff;
+    font-size: 10px;
+    border-radius: 0; }
+
+  .plitImage.right::before {
+    opacity: 1;
+  }
