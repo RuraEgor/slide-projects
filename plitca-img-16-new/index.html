@@ -12,6 +12,26 @@
   <ul id="sortable" class="plitImage">
   </ul>
 
+  <style>
+    li::before {
+        content: "";
+        position: absolute;
+        display: inline-block;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        transition: opacity 0.7s;
+        opacity: 0;
+        background: rgba(256, 256, 256, 0.4);
+        z-index: 2;
+      }
+
+      li.cl-hover::before {
+        opacity: 1;
+      }
+  </style>
+
   <script>
    var arr_elem = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 
@@ -44,7 +64,8 @@
     $("#sortable li").draggable({
 
         containment:"#sortable",
-        revert:"valid",
+        revert: true,
+        revertDuration: 250,
 
         start: function(){
 
@@ -55,16 +76,21 @@
         },
         stop: function(){
             
-            $("#sortable li").removeClass("z-ind");
-            $(this).attr("data-count", buf_from[0]);
-            $(this).css("background-position", buf_from[1]);
+            if ( !!buf_from && !!buf_from ) {
 
+                $("#sortable li").removeClass("z-ind");
+                $(this).attr("data-count", buf_from[0]);
+                $(this).css("background-position", buf_from[1]);
+
+                buf_from[0] = null;
+                buf_from[1] = null;
+            }
         },
 
     });
 
     $("#sortable li").droppable({
-
+        hoverClass: "cl-hover",
     	drop: function(event, ui) {
 
             buf_from[0] = $(this).attr("data-count");
