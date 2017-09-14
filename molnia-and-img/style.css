@@ -1,0 +1,8 @@
+body {
+	background: linear-gradient(#030726, #2c3dc2);
+}
+
+canvas {
+	display: block;
+	min-height: 1000px;
+}
