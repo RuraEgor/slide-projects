@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+		  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<script src="jquery-3.2.1.js"></script>
+	<script src="velocity.min.js"></script>
+</head>
+<body>
+
+<div class="wrap">
+
+</div>
+
+
+<style>
+	.wrap {
+		width: 500px;
+		height: 800px;
+		background: linear-gradient(to top, #fefcea, #f1da36 );
+		transition: 0.3s all;
+	}
+
+	.wrap:hover {
+		background: linear-gradient(to top, #fefcea, lime );
+	}
+</style>
+<button class="but">777777</button>
+
+<script>
+//	interval = 0;
+//	gradient_percent = 0;
+//	interval_value = 0.1;
+//	var interval_gradient = setInterval(function(){
+//		if(gradient_percent > 52) clearInterval(interval_gradient);
+//
+//		gradient_percent += interval_value;
+//		$('.wrap').css('background', 'linear-gradient(to right, #373535 '+gradient_percent+'%,rgba(0,0,0,0) 100%)');
+//
+//		++interval;
+//	}, 50);
+
+
+var interval = 0;
+var gradient_percent = 0;
+var interval_value = 0.1;
+var requestId;
+
+
+function loop() {
+
+	if(gradient_percent < 32) {
+
+		gradient_percent += interval_value;
+		$('.wrap').css('background', 'linear-gradient(to right, #373535 '+gradient_percent+'%,rgba(0,0,0,0) 100%)');
+
+		++interval;
+
+		requestId = requestAnimationFrame( function() { loop(); } );
+
+	}
+
+}
+
+loop();
+
+
+$(".but").on("click", function () {
+
+	cancelAnimationFrame(requestId);
+})
+
+
+var i = 0;
+
+requestAnimationFrame( function() { console.log(++i); } );
+
+</script>
+
+
+<script src="script.js"></script>
+</body>
+</html>
